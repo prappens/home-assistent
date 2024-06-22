@@ -14,9 +14,9 @@ services:
     image: "eclipse-mosquitto:${MOSQUITTO_DOCKER_TAG}"
     container_name: mosquitto
     volumes:
-      - /opt/mosquitto:/mosquitto
-      - /opt/mosquitto/data:/mosquitto/data
-      - /opt/mosquitto/log:/mosquitto/log
+      - ./mqtt:/mosquitto
+      - ./mqtt/data:/mosquitto/data
+      - ./mqtt/log:/mosquitto/log
     ports:
       - 1883:1883
       - 9001:9001
