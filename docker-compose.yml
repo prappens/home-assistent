@@ -1,0 +1,22 @@
+version: '3'
+services:
+  homeassistant:  # Home Assistent Container
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:2024.6"
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+  mosquitto:  # MQTT Broker Container
+    image: eclipse-mosquitto:2.0.18
+    container_name: mosquitto
+    volumes:
+      - /opt/mosquitto:/mosquitto
+      - /opt/mosquitto/data:/mosquitto/data
+      - /opt/mosquitto/log:/mosquitto/log
+    ports:
+      - 1883:1883
+      - 9001:9001
