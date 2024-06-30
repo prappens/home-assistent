@@ -1,6 +1,8 @@
 .idea/
 
+# Home Assistent configuration
 config/
-mqtt/
 
+# MQTT 
+mqtt/data
 
